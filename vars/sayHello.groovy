@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 import hudson.tasks.test.AbstractTestResultAction
 import hudson.tasks.junit.CaseResult
+@NonCPS
 def call(Map<String, String> params) {
    def testList = params["testList"]
 
