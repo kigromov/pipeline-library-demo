@@ -1,6 +1,9 @@
 #!/usr/bin/env groovy
 
 def call(String name = 'human') {
-  echo "Hello, ${name}."
+   stage("start test job") 
+    {
+        build job: 'AllureTest/allure', parameters: [string(name: 'testList', value: '*')]
+    }
 }
 
