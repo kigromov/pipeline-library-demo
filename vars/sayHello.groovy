@@ -5,14 +5,13 @@ def call(String name = 'human') {
    stage("start test job") 
     {
        echo "START JOB"
-       def currentBuild
-       catchError {
-       currentBuild = build job: 'AllureTest/allure', parameters: [string(name: 'testList', value: '*')]
-          echo currentBuild
-       }
-       echo currentBuild
+
+       def cBuild = build job: 'AllureTest/allure', propagate: true, wait: true, parameters: [string(name: 'testList', value: '*')]
+       echo cBuild
+
+
        echo "END JOB"
-        def testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
+        def testResultAction = cBuild.rawBuild.getAction(AbstractTestResultAction.class)
         def failedTests = testResultAction.getFailedTests()
         def failedTestsString = "```"
         for(CaseResult cr : failedTests) {
