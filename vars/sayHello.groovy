@@ -7,7 +7,7 @@ def call(Map<String, String> params) {
     {
        echo testList
        echo "START 1 JOB"
-       def currentBuild = runTestJob()
+       def currentBuild = runTestJob(testList: testList)
        echo "END 1 JOB"
        
        def testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
