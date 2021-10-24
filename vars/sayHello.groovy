@@ -8,7 +8,9 @@ def call(String name = 'human') {
        def currentBuild
        catchError {
        currentBuild = build job: 'AllureTest/allure', parameters: [string(name: 'testList', value: '*')]
+          echo currentBuild
        }
+       echo currentBuild
        echo "END JOB"
         def testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
         def failedTests = testResultAction.getFailedTests()
