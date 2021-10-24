@@ -16,7 +16,7 @@ def call(Map<String, String> params)
            for(CaseResult cr : failedTests) {
                testList = testList + "FullyQualifiedName~${cr.getFullDisplayName()} | "
            }
-         testList = "--filter " + testList
+         testList = "--filter " + "\"" + testList + "\""
          echo testList
         }
    }
