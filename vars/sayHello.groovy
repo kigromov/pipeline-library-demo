@@ -4,18 +4,22 @@ import hudson.tasks.junit.CaseResult
 def call(String name = 'human') {
    stage("start test job") 
     {
-       def testList = params["testList"] ?: "*Test"
-       echo "START JOB"
-       def cBuild = runTestJob(testList: testList)
-       echo "END JOB"
+       echo "START 1 JOB"
+       def cBuild = runTestJob()
+       echo "END 1 JOB"
        
        def testResultAction = cBuild.rawBuild.getAction(AbstractTestResultAction.class)
        def failedTests = testResultAction.getFailedTests()
-       def failedTestsString = "```"
+       def testList = "```"
        for(CaseResult cr : failedTests) {
-           failedTestsString = failedTestsString + "${cr.getFullDisplayName()}:\n${cr.getErrorDetails()}\n\n"
+           testList = testList + "${cr.getFullDisplayName()}:\n${cr.getErrorDetails()}\n\n"
         }
-       echo failedTestsString
+       echo testList
+       
+       echo "START 2 JOB"
+       def cBuild = runTestJob(testList: testList)
+       echo "END 2 JOB"
+       
     }
             
 }
