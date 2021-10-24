@@ -21,6 +21,8 @@ def call(Map<String, String> params) {
         }
        echo testList
        
+   sleep(10000)
+   
        echo "START 2 JOB"
       stage("start test job 2") 
     {
