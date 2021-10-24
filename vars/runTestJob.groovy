@@ -3,6 +3,6 @@ def call(Map<String, String> params) {
    echo "runTestJob started" 
    def testList = params["testList"]
    echo testList
-   def cBuild = build job: 'AllureTest/allure', propagate: false, wait: true, parameters: [string(name: 'testList', value: testList)]
+   def cBuild = build job: 'AllureTest/allure', parameters: [string(name: 'testList', value: testList)]
    return cBuild         
 }
