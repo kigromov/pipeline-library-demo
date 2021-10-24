@@ -13,12 +13,12 @@ def call(Map<String, String> params) {
        def testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
        def failedTests = testResultAction.getFailedTests()
        for(CaseResult cr : failedTests) {
-           testList = testList + "${cr.getFullDisplayName()}:\n${cr.getErrorDetails()}\n\n"
+           testList = testList + "${cr.getFullDisplayName()},"
         }
        echo testList
        
        echo "START 2 JOB"
-       def cBuild = runTestJob(testList: testList)
+       currentBuild  = runTestJob(testList: testList)
        echo "END 2 JOB"
        
     }
