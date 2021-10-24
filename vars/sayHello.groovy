@@ -1,5 +1,6 @@
 #!/usr/bin/env groovy
-
+import hudson.tasks.test.AbstractTestResultAction
+import hudson.tasks.junit.CaseResult
 def call(String name = 'human') {
    stage("start test job") 
     {
