@@ -6,7 +6,7 @@ def call(String name = 'human') {
     {
        echo "START JOB"
 
-       def cBuild = build job: 'AllureTest/allure', propagate: true, wait: true, parameters: [string(name: 'testList', value: '*')]
+       def cBuild = build job: 'AllureTest/allure', propagate: false, wait: true, parameters: [string(name: 'testList', value: '*')]
        echo cBuild
 
 
