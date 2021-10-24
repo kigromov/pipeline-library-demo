@@ -3,8 +3,7 @@ import hudson.tasks.test.AbstractTestResultAction
 import hudson.tasks.junit.CaseResult
 def call(Map<String, String> params) {
    def testList = params["testList"]
-   stage("start test job") 
-    {
+
        echo testList
        echo "START 1 JOB"
        def currentBuild = runTestJob(testList: testList)
@@ -20,8 +19,6 @@ def call(Map<String, String> params) {
        echo "START 2 JOB"
        currentBuild  = runTestJob(testList: testList)
        echo "END 2 JOB"
-       
-    }
-            
+                  
 }
 
