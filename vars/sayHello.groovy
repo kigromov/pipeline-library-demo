@@ -2,6 +2,7 @@
 import hudson.tasks.test.AbstractTestResultAction
 import hudson.tasks.junit.CaseResult
 def call(Map<String, String> params) {
+   def testList = params["testList"] ?: "*Test"
    stage("start test job") 
     {
        echo testList
