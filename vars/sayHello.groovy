@@ -6,9 +6,10 @@ def call(Map<String, String> params) {
 
        echo testList
        echo "START 1 JOB"
+   def currentBuild
       stage("start test job 1") 
     {
-       def currentBuild = runTestJob(testList: testList)
+       currentBuild = runTestJob(testList: testList)
     }
        echo "END 1 JOB"
        
