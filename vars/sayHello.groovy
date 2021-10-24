@@ -5,8 +5,9 @@ def call(String name = 'human') {
    stage("start test job") 
     {
        echo "START JOB"
+       def currentBuild
        catchError {
-        build job: 'AllureTest/allure', parameters: [string(name: 'testList', value: '*')]
+       currentBuild = build job: 'AllureTest/allure', parameters: [string(name: 'testList', value: '*')]
        }
        echo "END JOB"
         def testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
