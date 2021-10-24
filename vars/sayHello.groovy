@@ -5,10 +5,10 @@ def call(String name = 'human') {
    stage("start test job") 
     {
        echo "START 1 JOB"
-       def cBuild = runTestJob()
+       def currentBuild = runTestJob()
        echo "END 1 JOB"
        
-       def testResultAction = cBuild.rawBuild.getAction(AbstractTestResultAction.class)
+       def testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
        def failedTests = testResultAction.getFailedTests()
        def testList = "```"
        for(CaseResult cr : failedTests) {
