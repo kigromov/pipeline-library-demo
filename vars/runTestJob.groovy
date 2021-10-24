@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 def call(Map<String, String> params) {
    echo "runTestJob started" 
-   def testList = params["testList"] ?: "*Test"
+   def testList = params["testList"]
    echo testList
    def cBuild
    stage("start test job") 
