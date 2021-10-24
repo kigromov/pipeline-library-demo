@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 import hudson.tasks.test.AbstractTestResultAction
 import hudson.tasks.junit.CaseResult
-def call(String name = 'human') {
+def call(Map<String, String> params) {
    stage("start test job") 
     {
        echo "START 1 JOB"
