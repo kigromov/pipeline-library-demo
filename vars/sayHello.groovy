@@ -12,7 +12,6 @@ def call(Map<String, String> params) {
        
        def testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
        def failedTests = testResultAction.getFailedTests()
-       def testList = "```"
        for(CaseResult cr : failedTests) {
            testList = testList + "${cr.getFullDisplayName()}:\n${cr.getErrorDetails()}\n\n"
         }
