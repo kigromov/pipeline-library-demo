@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-@NonCPS
+
 def call(Map<String, String> params) {
    echo "runTestJob started" 
    def testList = params["testList"]
