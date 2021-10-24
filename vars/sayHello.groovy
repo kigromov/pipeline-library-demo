@@ -4,6 +4,8 @@ import hudson.tasks.junit.CaseResult
 def call(Map<String, String> params) {
    stage("start test job") 
     {
+       def testList = params["testList"] ?: "*Test"
+       echo testList
        echo "START 1 JOB"
        def currentBuild = runTestJob()
        echo "END 1 JOB"
