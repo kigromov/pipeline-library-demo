@@ -6,6 +6,7 @@ def call(Map<String, String> params)
 {
    def testList = params["testList"]
    def currentBuild
+   def result
    for (int i = 0; i < 2; i++) 
    {
       stage("start test job ${i}") 
@@ -16,9 +17,9 @@ def call(Map<String, String> params)
            for(CaseResult cr : failedTests) {
                testList = testList + "FullyQualifiedName~${cr.getFullDisplayName()} | "
            }
-         testList.substring(0, testList.length() - 3);
-         testList = "--filter " + "\"" + testList + "\""
-         echo testList
+         result = testList.substring(0, testList.length() - 3);
+         testList = "--filter " + "\"" + result + "\""
+         echo result
         }
    }
 }
