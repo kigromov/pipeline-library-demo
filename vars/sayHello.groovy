@@ -6,7 +6,10 @@ def call(Map<String, String> params) {
 
        echo testList
        echo "START 1 JOB"
+      stage("start test job 1") 
+    {
        def currentBuild = runTestJob(testList: testList)
+    }
        echo "END 1 JOB"
        
        def testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
@@ -17,7 +20,10 @@ def call(Map<String, String> params) {
        echo testList
        
        echo "START 2 JOB"
+      stage("start test job 2") 
+    {
        currentBuild  = runTestJob(testList: testList)
+    }
        echo "END 2 JOB"
                   
 }
