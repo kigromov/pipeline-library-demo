@@ -14,6 +14,7 @@ def call(Map<String, String> params)
            currentBuild = runTestJob(testList: testList)
            def testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
            def failedTests = testResultAction.getFailedTests()
+           testList = ""
            for(CaseResult cr : failedTests) {
                testList = testList + "FullyQualifiedName~${cr.getFullDisplayName()} | "
            }
