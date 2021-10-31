@@ -16,7 +16,7 @@ def call(Map<String, String> params)
            def failedTests = testResultAction.getFailedTests()
            testList = ""
            for(CaseResult cr : failedTests) {
-               testList = testList + "FullyQualifiedName~${cr.getFullDisplayName()} | "
+               testList = testList + "FullyQualifiedName~${cr.getDisplayName()} | "
            }
          result = testList.substring(0, testList.length() - 3);
          testList = "--filter " + "\"" + result + "\""
