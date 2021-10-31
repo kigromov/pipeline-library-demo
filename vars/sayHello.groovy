@@ -6,11 +6,12 @@ def call(Map<String, String> params)
 {
    def testList = params["testList"]
    def result
+   def currentBuild
    for (int i = 0; i < 2; i++) 
    {
       stage("start test job ${i}") 
         {
-           def currentBuild = runTestJob(testList: testList)
+           currentBuild = runTestJob(testList: testList)
            def testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
            def failedTests = testResultAction.getFailedTests()
            testList = ""
